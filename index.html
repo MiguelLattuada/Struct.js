@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/qunit-1.14.0.css"/>
+        <script src="dependencies/require.js"></script>
+        <script src="dependencies/config.require.js"></script>
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+    </body>
+    <script>
+        
+        require(['QUnit', 'ObjectPrototypeTests', 'ArrayListTests'], function(qunit, test_object, test_array){
+            test_object.runner.start();
+            test_array.runner.start();
+            qunit.load();
+            qunit.start();
+        });
+        
+    </script>
+</html>
