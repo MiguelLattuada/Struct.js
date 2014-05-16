@@ -22,6 +22,7 @@ Values: *values are not obligatory.*
 - duplicate: [Boolean](), *define if the ArrayList accepts or not duplicate elements.*
 	- values: `[true, false]`
 	- default: `false`.
+
 ##
 ##Public Members, Elements aimed.
 **Methods:** *public methods of the ArrayList.*
@@ -35,6 +36,7 @@ Values: *values are not obligatory.*
 - `deleteObject([,Object Element])`: [Function](), __return__: [Boolean](), *delete the given object.*
 - `isProperItem([,Object Element])`: [Function](), __return__: [Boolean](), *define if an element can be added to the ArrayList, add method already use it.*
 - `verifyDuplication([,Object Element])`: [Function](), __return__: [Boolean](), *define if an element is already in the ArrayList based on the GUID property, also add method use it.*
+
 ##
 ##Public Members, ArrayList aimed.
 **Attributes:** *public attributes of the ArrayList.*
