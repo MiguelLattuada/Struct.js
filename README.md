@@ -14,7 +14,8 @@ window.CAT_LIST //An ArrayList of custom class Cat
 You can also see on https://github.com/MiguelLattuada/Struct.js/blob/master/structure.png the exposed members of the ArrayList displayed on the console.
 
 ###For the next commit:
-- Simple documentation page for actual private/public methods and properties.
+- ~~Simple documentation page for actual private/public methods and properties.~~
+    - Now you can read [the API Docs]("https://github.com/MiguelLattuada/Struct.js/blob/master/API%20Docs.md")
 - Code recognition.
 - Code refactor.
 - New functionality, and new incoming data structure.
