@@ -39,6 +39,8 @@ Values: *values are not obligatory.*
 - `deleteObject([,Object Element])`: [Function](), __return__: [Boolean](), *delete the given object.*
 - `isProperItem([,Object Element])`: [Function](), __return__: [Boolean](), *define if an element can be added to the ArrayList, add method already use it.*
 - `verifyDuplication([,Object Element])`: [Function](), __return__: [Boolean](), *define if an element is already in the ArrayList based on the GUID property, also add method use it.*
+- `setPropertyOf([,Numeric Index], [,String PropertyName], [,Object PropertyValue])`: [Function](), __return__: [Object](), *chenge the value of an object property or add new property and value.*
+- `getBy([,Object Properties])`: [Function](), __return__: [Array](), *search or filter items by properties.*
 
 ##
 ##Public Members, ArrayList aimed.
