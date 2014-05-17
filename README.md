@@ -16,6 +16,7 @@ You can also see on [the PNG](structure.png) the exposed members of the ArrayLis
 ###For the next commit:
 - ~~Simple documentation page for actual private/public methods and properties.~~
     - Now you can read [the api docs](API Docs.md)
-- Code recognition.
+- ~~Code recognition.~~
+    - Follow everyday [commits](../../commits)
 - Code refactor.
 - New functionality, and new incoming data structure.
