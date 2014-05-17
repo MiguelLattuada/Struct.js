@@ -22,6 +22,9 @@ Values: *values are not obligatory.*
 - duplicate: [Boolean](), *define if the ArrayList accepts or not duplicate elements.*
 	- values: `[true, false]`
 	- default: `false`.
+- key: [String](), *define the identity of custom class or literal objects.*
+	- values: *propertie from the custom object or object literal.*
+	- default: `GUID`.
 
 ##
 ##Public Members, Elements aimed.
@@ -56,3 +59,4 @@ Values: *values are not obligatory.*
 - `toArray()`: [Function](), __return__: [Array](), *return the Array behind the ArrayList.*
 - `toString()`: [Function](), __return__: [String](), *return a string of the ArrayList, toString() method on every object must be overridden.*
 - `subArrayList([,Numeric IndexFrom], [,Numeric IndexTo])`: [Function](), __return__: [ArrayList](), *create a sub ArrayList.*
+- `toJSON()`: [Function](), __return__: [String](), *return a JSON string from ArrayList data.*
