@@ -41,6 +41,7 @@ Values: *values are not obligatory.*
 - `verifyDuplication([,Object Element])`: [Function](), __return__: [Boolean](), *define if an element is already in the ArrayList based on the key property or GUID, also add method use it.*
 - `setPropertyOf([,Numeric Index], [,String PropertyName], [,Object PropertyValue])`: [Function](), __return__: [Object](), *chenge the value of an object property or add new property and value.*
 - `getBy([,Object Properties])`: [Function](), __return__: [Array](), *search or filter items by properties.*
+- `getPropertyValue([,Numeric Index], [,String PropertyName])`: [Function](), __return__: [Object](), *get the value of a property in the object at the Index position.*
 
 ##
 ##Public Members, ArrayList aimed.
