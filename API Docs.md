@@ -42,6 +42,9 @@ Values: *values are not obligatory.*
 - `setPropertyOf([,Numeric Index], [,String PropertyName], [,Object PropertyValue])`: [Function](), __return__: [Object](), *chenge the value of an object property or add new property and value.*
 - `getBy([,Object Properties])`: [Function](), __return__: [Array](), *search or filter items by properties.*
 - `getPropertyValue([,Numeric Index], [,String PropertyName])`: [Function](), __return__: [Object](), *get the value of a property in the object at the Index position.*
+- `first()`: [Function](), __return__: [Object](), *get the first element of the ArrayList.*
+- `last()`: [Function](), __return__: [Object](), *get the last element of the ArrayList.*
+- `take([,Object] propertyValue])`, [Function](), __return__: [Object](), *get an element by providing the key attribute value (primary key like).*
 
 ##
 ##Public Members, ArrayList aimed.
