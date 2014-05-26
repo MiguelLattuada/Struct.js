@@ -1,0 +1,4 @@
+body { background: #2b2b2b; font-family: Arial }
+form { background: #ebebeb; width: 260px; padding: 10px; float: left; margin-right: 20px;}
+form input { width: 250px; border-radius: 5px; padding: 5px; border: 1px solid grey; margin-top: 10px; }
+#show-console, #show-console-all { display: none; }

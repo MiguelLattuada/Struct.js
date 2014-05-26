@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Struct quick example</title>
+		<link rel="stylesheet" href="main.css"/>
+		<script src="js/vendors/jquery.min.js"></script>
+		<script src="js/vendors/struct-1.0.0.min.js"></script>
+	</head>
+	<body>
+		<header>
+			
+		</header>
+		<div class="main">
+
+			<form action="#" class="form" data-action="add">
+				<h2>Add a new person.</h2>
+				<label for="name">Name: </label><input type="text" id="name" required>
+				<label for="last">Last: </label><input type="text" id="last" required>
+				<label for="age">Age: </label><input type="number" id="age" required>
+				<input type="submit" value="Add">
+			</form>
+
+			<form action="#" class="form" data-action="delete">
+				<h2>Delete a person.</h2>
+				<select id="names">
+				</select>
+				<input type="submit" value="Delete">
+			</form>
+
+			<button id="show-console">Show last event in console</button>
+			<button id="show-console-all">Show all events in console</button>
+
+		</div>
+		<footer>
+		</footer>
+		<script src="js/app.js"></script>
+		<script src="js/event.js"></script>
+	</body>
+</html>
