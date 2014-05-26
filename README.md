@@ -1,19 +1,10 @@
 Struct.js
 =========
 
-Struct.js is a javascript library that exposes the ArrayList class based on the java class with the same name.
-
-~~Now to get up and running just download the files open the index.html and play in the console with the variables
-
-```javascript
-window.struct //An object that contains the ArrayList class.
-window.N_LIST //An ArryList of type numeric.
-window.CAT_LIST //An ArrayList of custom class Cat
-```
-
-You can also see on [the PNG](structure.png) the exposed members of the ArrayList displayed on the console.~~
+Struct.js is a javascript library that exposes the ArrayList class based on the java class with the same name. Keep things done and manipulate data like in other languages.
 
 **The first none standard version of the library is out [here](../../releases).**
+Now to get up and running just open the index.html file from the Example Project folder and star to see waht is happening behind the scene with the console.
 
 ###For upcoming commits:
 - ~~Simple documentation page for actual private/public methods and properties.~~
