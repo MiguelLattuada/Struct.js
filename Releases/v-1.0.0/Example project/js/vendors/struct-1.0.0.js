@@ -236,8 +236,9 @@ var Struct;
                         Still does not work.
                 */
                 _this.take = function( keyValue ){
-                    var key = _this.key;
-                    return _this.getBy({ key: keyValue })[0];
+                    var filterOptions = {};
+                    filterOptions[_this.key] = keyValue;
+                    return _this.getBy(filterOptions)[0];
                 };
 
                 /*
