@@ -51,26 +51,6 @@ var Struct;
   Object.prototype.equals = function( comparer ){ return this == comparer; };
 
   /*
-    Def: Type exception
-    Parameters:
-      msg [,String], the message to show.
-    Returns:
-      A new instance of TypeException.
-  */
-  s.TypeException = function(m){
-    this.message = m;
-    this.name = 'TypeException';
-    this.toString = function(){
-      return this.name + ': ' + this.message;
-    };
-  };
-
-
-
-  /*
-  */
-
-  /*
     Def: The definition of the ArrayList class.
     Type: [,Function]
   */
@@ -95,7 +75,7 @@ var Struct;
           _this.ducplicate = properties.duplicate || false;
 
           //Def: special properties for element type = 5.
-          if( _this.type == 5 ){
+          if( _this.type.equals( 5 ) ){
             //Def: the base class for the objects.
             _this.baseClass = properties.baseClass || undefined;
             //Def: the key to identify objects.
@@ -127,11 +107,9 @@ var Struct;
           if ( !!item && _this.isProperItem( item ) ){
             if( _this.verifyDuplication( item ) ){
 
-              if ( !!index ){
+              if ( !!index || index === 0 ){
                 if ( indexRangeCheck( index ) ){
                   reorderAndInsert( item, index );
-                }else{
-                  return false;
                 }
               }else{
                 _this.data.push(item);
@@ -391,6 +369,8 @@ var Struct;
           Returns:
             true, if the range was deleted.
             false, if the index is out of range or from index < to index.
+          Notes:
+            Be careful elements at the position from and to, will be removed.
         */
         _this.deleteRange = function( from, to ){
           if( indexRangeCheck( from ) && indexRangeCheck( to )){
@@ -502,6 +482,51 @@ var Struct;
         //PRIVATE MEMBERS
 
         /*
+          Def: Type exception
+          Parameters:
+            msg [,String], the message to show.
+          Returns:
+            a new instance of TypeException.
+        */
+        var TypeException = function( msg ){
+          this.message = msg;
+          this.name = 'TypeException';
+          this.toString = function(){
+            return this.name + ': ' + this.message;
+          };
+        };
+
+        /*
+          Def: Invalid argument exception
+          Parameters:
+            msg [,String], the message to show.
+          Returns:
+            a new instance of InvalidArgumentException.
+        */
+        var InvalidArgumentException = function( msg ){
+          this.message = msg;
+          this.name = 'InvalidArgumentException';
+          this.toString = function(){
+            return this.name + ': ' + this.message;
+          };
+        };
+
+        /*
+          Def: Out of range exception
+          Parameters:
+            msg [,String], the message to show.
+          Returns:
+            a new instance of OutOfRangeException.
+        */
+        var OutOfRangeException = function( msg ){
+          this.message = msg;
+          this.name = 'OutOfRangeException';
+          this.toString = function(){
+            return this.name + ': ' + this.message;
+          };
+        }
+
+        /*
           Def: validate a given index of the ArrayList.
           Parameters:
             index [,Numeric], position to check.
@@ -510,7 +535,9 @@ var Struct;
             false, the index is out the range of ArrayList positioning.
         */
         var indexRangeCheck = function( index ){
-          return ( index >= 0 && index < _this.count && index.typeVerify(1) );
+          if( !index.typeVerify( 1 ) ) throw new TypeException('Index must be a numeric value');
+          if( index < 0 || index > _this.count ) throw new OutOfRangeException('Index out of range');
+          return true;
         };
 
         /*
@@ -540,6 +567,8 @@ var Struct;
         var reorderAndInsert = function( item, index ){
           if( index.equals(0) ){
             _this.data.unshift( item );
+          }else if( index.equals(_this.count) ){
+            _this.data.push( item );
           }else{
             var result = _this.data.slice( 0, index );
             result.push( item );
@@ -594,7 +623,13 @@ var Struct;
 
         //Returns the init method for default settings.
         return init( );
+
+      } else {
+        throw new InvalidArgumentException('ArrayList parameter must be [Object object]');
       }
+
+    } else {
+      throw new InvalidArgumentException('ArrayList parameter must be [Object object]');
     }
     return null;
   };
