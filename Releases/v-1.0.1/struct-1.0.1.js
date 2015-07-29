@@ -233,8 +233,9 @@ var Struct;
             Still does not work.
         */
         _this.take = function( keyValue ){
-          var key = _this.key;
-          return _this.getBy({ key: keyValue })[0];
+          var search = {};
+          search[_this.key] = keyValue;
+          return _this.getBy(search)[0];
         };
 
         /*
@@ -524,7 +525,7 @@ var Struct;
           this.toString = function(){
             return this.name + ': ' + this.message;
           };
-        }
+        };
 
         /*
           Def: validate a given index of the ArrayList.
