@@ -1,43 +1,4 @@
 'use strict';
-/*
-    Def: Get the primitive type of any element and return it as a numeric value.
-    Returns:
-        1, if type is numeric,
-        2, if type is string,
-        3, if type is array,
-        4, if type is function,
-        5, in any other case.
-*/
-Object.prototype.typeof = function( ){
-        var type = typeof this;
-        switch ( type ){
-            case 'number': return 1;
-            case 'string': return 2;
-            case 'array': return 3;
-            case 'function': return 4;
-            default: return 5;
-        }
-    };
-
-/*
-    Def: Verify the type of any object by passing the numeric value of a primitive type.
-    Parameters:
-        typeInt [,Numeric], value to compare must be the correspond numeric value of a primitive type otherwise the comparation will fail.
-    Returns:
-        true, the value in the parameter is the object type.
-        false, the value in the parameter is not the object type.
-*/
-Object.prototype.typeVerify = function( typeInt ){ return this.typeof( ) == typeInt; };
-
-/*
-    Def: Compare element in a very basic way.
-    Parameters:
-        comparer [,Object], the object to compare.
-    Returns:
-        true, if the comparer is equals to the object.
-        false, if the comparer is not equals to the object.
-*/
-Object.prototype.equals = function( comparer ){ return this == comparer; };
 
 /*
     Def: The base object that will contain the ArrayList class.
@@ -50,6 +11,45 @@ var Struct;
     Type: [,Function]
 */
 (function(s){
+    /*
+        Def: Get the primitive type of any element and return it as a numeric value.
+        Returns:
+            1, if type is numeric,
+            2, if type is string,
+            3, if type is array,
+            4, if type is function,
+            5, in any other case.
+    */
+    Object.prototype.typeof = function( ){
+            var type = typeof this;
+            switch ( type ){
+                case 'number': return 1;
+                case 'string': return 2;
+                case 'array': return 3;
+                case 'function': return 4;
+                default: return 5;
+            }
+        };
+
+    /*
+        Def: Verify the type of any object by passing the numeric value of a primitive type.
+        Parameters:
+            typeInt [,Numeric], value to compare must be the correspond numeric value of a primitive type otherwise the comparation will fail.
+        Returns:
+            true, the value in the parameter is the object type.
+            false, the value in the parameter is not the object type.
+    */
+    Object.prototype.typeVerify = function( typeInt ){ return this.typeof( ) == typeInt; };
+
+    /*
+        Def: Compare element in a very basic way.
+        Parameters:
+            comparer [,Object], the object to compare.
+        Returns:
+            true, if the comparer is equals to the object.
+            false, if the comparer is not equals to the object.
+    */
+    Object.prototype.equals = function( comparer ){ return this == comparer; };
 
     /*
         Def: The definition of the ArrayList class.
@@ -174,17 +174,7 @@ var Struct;
                 _this.get = function( index ){
                     if( indexRangeCheck( index ) )
                         return _this.data[index];
-                    return null
-                };
-
-                /*
-                  Def: get the first element.
-                  Returns:
-                    [,Object], the element in the index position.
-                    null, if the ArrayList is empty
-                */
-                _this.first = function( ){
-                  return _this.get(0);
+                    return null;
                 };
 
                 /*
@@ -266,7 +256,7 @@ var Struct;
                 */
                 _this.first = function( ){
                     return _this.get(0);
-                }
+                };
 
                 /*
                     Def: replace the element in a certain position with another.
@@ -284,7 +274,7 @@ var Struct;
                             return true;
                         }
                     }
-                    return false
+                    return false;
                 };
 
                 /*
@@ -306,7 +296,7 @@ var Struct;
                         return item;
                     }
                     return null;
-                }
+                };
 
                 /*
                     Def: get the element by itself and return the position in the ArrayList.
@@ -394,7 +384,11 @@ var Struct;
                     return false;
                 };
 
-                //Def: remove all elements from the ArrayList.
+                /*
+                  Def: remove all elements from the ArrayList.
+                  Notes:
+                    This is a dangerous method instead use any delete kind method unless you want to delete the entire ArrayList.
+                */
                 _this.clear = function( ){
                     _this.data = new Array(0);
                     _this.count = 0;
@@ -584,6 +578,6 @@ var Struct;
             }
         }
         return null;
-    }
+    };
 
 })(Struct || ( Struct = {} ));
