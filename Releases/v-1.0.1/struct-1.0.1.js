@@ -51,6 +51,51 @@ var Struct;
   Object.prototype.equals = function( comparer ){ return this == comparer; };
 
   /*
+    Def: Type exception
+    Parameters:
+      msg [,String], the message to show.
+    Returns:
+      a new instance of TypeException.
+  */
+  var TypeException = function( msg ){
+    this.message = msg;
+    this.name = 'TypeException';
+    this.toString = function(){
+      return this.name + ': ' + this.message;
+    };
+  };
+
+  /*
+    Def: Invalid argument exception
+    Parameters:
+      msg [,String], the message to show.
+    Returns:
+      a new instance of InvalidArgumentException.
+  */
+  var InvalidArgumentException = function( msg ){
+    this.message = msg;
+    this.name = 'InvalidArgumentException';
+    this.toString = function(){
+      return this.name + ': ' + this.message;
+    };
+  };
+
+  /*
+    Def: Out of range exception
+    Parameters:
+      msg [,String], the message to show.
+    Returns:
+      a new instance of OutOfRangeException.
+  */
+  var OutOfRangeException = function( msg ){
+    this.message = msg;
+    this.name = 'OutOfRangeException';
+    this.toString = function(){
+      return this.name + ': ' + this.message;
+    };
+  };
+
+  /*
     Def: The definition of the ArrayList class.
     Type: [,Function]
   */
@@ -104,7 +149,9 @@ var Struct;
         */
         _this.add = function( item, index ){
 
-          if ( !!item && _this.isProperItem( item ) ){
+          if( item === undefined ) throw new InvalidArgumentException('Item cannot be undefined');
+
+          if ( _this.isProperItem( item ) ){
             if( _this.verifyDuplication( item ) ){
 
               if ( !!index || index === 0 ){
@@ -169,8 +216,9 @@ var Struct;
             null, if the index provided is out of range.
         */
         _this.get = function( index ){
-          if( indexRangeCheck( index ) )
-          return _this.data[index];
+          if( indexRangeCheck( index ) ){
+            return _this.data[index];
+          }
           return null;
         };
 
@@ -308,8 +356,10 @@ var Struct;
         */
         _this.find = function( item ){
 
+          if( item === undefined ) throw new InvalidArgumentException('Item cannot be undefined');
+
           if( _this.ducplicate )
-          return null;
+            return null;
 
           var result = -1;
           _this.data.filter(
@@ -321,7 +371,7 @@ var Struct;
                   if( element.GUID.equals(item.GUID) ) result = index;
                 }
               }else{
-                if( item.equals( element ) ) result = index
+                if( item.equals( element ) ) result = index;
               }
             }
           );
@@ -479,53 +529,33 @@ var Struct;
         _this.toJSON = function( ){
           return JSON.stringify(_this.data);
         };
+        
+        /*
+          Def: concatenate an ArrayList to another
+          Returns:
+            [,ArrayList], the new array list with concatenated items
+        */
+        _this.concat = function( list ) {
+          var flag = false;
+          if( !(list instanceof s.ArrayList) ) throw new InvalidArgumentException('Invalid argument it must be an ArrayList');
+          if( _this.type.equals(list.type) ) { 
+            if( _this.type.equals(5) ) {
+              if( _this.baseClass.equals(list.baseClass) ) {
+                flag = true;
+              }
+            }else{
+              flag = true;
+            }
+          }
+          if(flag){
+            list.data.forEach(function(v, i){
+              _this.add(v);
+              });
+          }
+          return _this;
+        };
 
         //PRIVATE MEMBERS
-
-        /*
-          Def: Type exception
-          Parameters:
-            msg [,String], the message to show.
-          Returns:
-            a new instance of TypeException.
-        */
-        var TypeException = function( msg ){
-          this.message = msg;
-          this.name = 'TypeException';
-          this.toString = function(){
-            return this.name + ': ' + this.message;
-          };
-        };
-
-        /*
-          Def: Invalid argument exception
-          Parameters:
-            msg [,String], the message to show.
-          Returns:
-            a new instance of InvalidArgumentException.
-        */
-        var InvalidArgumentException = function( msg ){
-          this.message = msg;
-          this.name = 'InvalidArgumentException';
-          this.toString = function(){
-            return this.name + ': ' + this.message;
-          };
-        };
-
-        /*
-          Def: Out of range exception
-          Parameters:
-            msg [,String], the message to show.
-          Returns:
-            a new instance of OutOfRangeException.
-        */
-        var OutOfRangeException = function( msg ){
-          this.message = msg;
-          this.name = 'OutOfRangeException';
-          this.toString = function(){
-            return this.name + ': ' + this.message;
-          };
-        };
 
         /*
           Def: validate a given index of the ArrayList.
@@ -536,6 +566,7 @@ var Struct;
             false, the index is out the range of ArrayList positioning.
         */
         var indexRangeCheck = function( index ){
+          if( index === undefined ) throw new InvalidArgumentException('Item cannot be undefined');
           if( !index.typeVerify( 1 ) ) throw new TypeException('Index must be a numeric value');
           if( index < 0 || index > _this.count ) throw new OutOfRangeException('Index out of range');
           return true;
